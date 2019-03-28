@@ -17,7 +17,10 @@ namespace JSONClasses
 
         public bool Match(string text)
         {
-            return text!=string.Empty && text[0] <= end && text[0] >= start;
+            if (text.Length==0)
+                return false;
+            char firstCharacter = text[0];
+            return firstCharacter <= end && firstCharacter >= start;
         }
     }
 }
