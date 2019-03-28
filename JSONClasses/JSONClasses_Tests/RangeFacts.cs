@@ -12,5 +12,12 @@ namespace JSONClasses_Tests
             var word = new Range('a', 'f');
             Assert.True(word.Match("a"));
         }
+
+        [Fact]
+        public void CheckWord_EmptyString()
+        {
+            var word = new Range('a', 'f');
+            Assert.False(word.Match(""));
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace JSONClasses
 
         public bool Match(string text)
         {
-            return text[0] <= end && text[0] >= start;
+            return text!=string.Empty && text[0] <= end && text[0] >= start;
         }
     }
 }
