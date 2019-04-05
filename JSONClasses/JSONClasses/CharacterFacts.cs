@@ -6,7 +6,7 @@ namespace JSONClasses_Tests
     public class CharacterFacts
     {
         [Fact]
-        public void Check_Returned_String_Empty()
+        public void Should_Return_Empty_String()
         {
             IMatch match = new SuccessMatch("");
             Assert.True(match.Succes());
@@ -16,9 +16,10 @@ namespace JSONClasses_Tests
         [Fact]
         public void Check_Returned_String_Number()
         {
-            IMatch match = new SuccessMatch("12");
+            var character = new Character('1');
+            IMatch match = character.Match("12");
             Assert.True(match.Succes());
-            Assert.Equal("12", match.RemainingText());
+            Assert.Equal("2", match.RemainingText());
         }
 
     }
