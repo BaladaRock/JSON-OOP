@@ -15,12 +15,14 @@ namespace JSONClasses
             this.end = end;
         }
 
-        public bool Match(string text)
+        public IMatch Match(string text)
         {
-            if (text.Length==0)
-                return false;
-            char firstCharacter = text[0];
-            return firstCharacter <= end && firstCharacter >= start;
+            return (string.IsNullOrEmpty(text)) ||
+             (text[0] < start) || 
+             (text[0] > end)
+            ? new FailedMatch(text)
+            : (IMatch) new SuccessMatch(text.Substring(1));
         }
+
     }
 }
