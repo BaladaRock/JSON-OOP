@@ -8,22 +8,84 @@ namespace JSONClasses_Tests
     {
 
         [Fact]
-        public void Check_Empty_String()
+        public void Should_return_Empty_String()
         {
-            
-            var match = new SuccessMatch("0");
-            Assert.True(match.Succes());
-            Assert.Equal("0",match.RemainingText());
+            IPattern choice = new Choice(
+                new Character('0'),
+                new Range('1', '5')
+                );
+            //Arrange
+            IMatch match = choice.Match("");
+            //Act
+            Assert.Equal("",match.RemainingText());
+            Assert.False(match.Succes());
+            //Assert
         }
 
         [Fact]
-        public void Check_Word_Number()
+        public void Should_return_Empty_Null()
         {
-
-            var match = new SuccessMatch("012");
-            Assert.Equal("012", match.RemainingText());
-            Assert.True(match.Succes());
-
+            IPattern choice = new Choice(
+                new Character('0'),
+                new Range('1','5')
+                );
+            //Arranging part
+            IMatch match=choice.Match(null);
+            //Acting part
+            Assert.Null(match.RemainingText());
+            Assert.False(match.Succes());
+            //Asserting part
         }
+
+        [Fact]
+        public void Should_eliminate_first_digit__Number_is_in__Range()
+        {
+            var choice = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+                );
+            //Arrange
+            var match = choice.Match("123");
+            //Act
+            Assert.Equal("23", match.RemainingText());
+            Assert.True(match.Succes());
+            //Assert
+        }
+
+        [Fact]
+        public void Should_return_same_string_when_it_Does_NOT_Match()
+        {
+            var choice = new Choice(
+                new Character('b'),
+                new Range('1', '9')
+                );
+            //Arrange
+            var match = choice.Match("abC");
+            //Act
+            Assert.Equal("abC", match.RemainingText());
+            Assert.False(match.Succes());
+            //Assert
+        }
+
+        [Fact]
+        public void Check_String_when_it_contains_Hexadecimal_Characters()
+        {
+            IPattern digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+                );
+            IPattern hex = new Choice(
+                digit,
+                new Range('a', 'f'),
+                new Range('A', 'F')
+                );
+            //Arrange
+            var match = hex.Match("A7");
+            //Act
+            Assert.Equal("7", match.RemainingText());
+            Assert.True(match.Succes());
+            //Assert
+        }
+
     }
 }
