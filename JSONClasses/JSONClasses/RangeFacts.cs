@@ -8,22 +8,25 @@ namespace JSONClasses_Tests
         [Fact]
         public void CheckWord_One_Character()
         {
-            var match = new SuccessMatch("abc");
+            var range = new Range('a','e');
+            var match = range.Match("a");
             Assert.True(match.Succes());
-            Assert.Equal("abc", match.RemainingText());
+            Assert.Equal("", match.RemainingText());
         }
 
         [Fact]
         public void CheckWord_EmptyString()
         {
-            IMatch match = new SuccessMatch("");
-            Assert.True(match.Succes());
+            var range = new Range('1', '0');
+            IMatch match = range.Match("");
+            Assert.False(match.Succes());
             Assert.Equal("", match.RemainingText());
         }
 
         [Fact]
         public void CheckWord_Numbers()
         {
+            var range = new Range('1', '9');
             IMatch match = new SuccessMatch("5");
             Assert.True(match.Succes());
             Assert.Equal("5", match.RemainingText());
