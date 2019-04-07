@@ -4,10 +4,11 @@ namespace JSONClasses
 {
     public class SuccessMatch : IMatch
     {
-        private string text;
+        private readonly string text;
+
         public SuccessMatch(string text)
         {
-            this.text = text;  
+            this.text = text;
         }
 
         public string RemainingText()

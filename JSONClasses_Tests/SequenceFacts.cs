@@ -8,7 +8,7 @@ namespace JSONClasses_Tests
         [Fact]
         public void Should_Return_Modified_Text()
         {
-            var word = new Sequance(
+            var word = new Sequence(
             new Character('a'),
             new Character('b')
             );
