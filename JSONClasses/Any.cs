@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JSONClasses
 {
-    public class Any:IPattern
+    public class Any : IPattern
     {
         private readonly string accepted;
 
@@ -15,16 +15,10 @@ namespace JSONClasses
 
         public IMatch Match(string text)
         {
-            foreach(var character in accepted)
-            {
-                if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(accepted))
-                    return new FailedMatch(text);
-
-                if (text[0] == character)
-                    return new SuccessMatch(text.Substring(1));
-            }
-            return new FailedMatch(text);
-            
+            return !string.IsNullOrEmpty(text)
+                && accepted?.Contains(text[0]) == true
+                ? (IMatch)new SuccessMatch(text.Substring(1))
+                : new FailedMatch(text);
         }
 
     }

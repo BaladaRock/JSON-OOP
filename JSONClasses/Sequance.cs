@@ -15,14 +15,13 @@ namespace JSONClasses
 
         public IMatch Match(string text)
         {
-            string result = text;
+            string original = text;
             foreach (var digit in patterns)
             {
                 IMatch match = digit.Match(text);
-                if (match.Success())
-                    text = match.RemainingText();
-                else
-                    return new FailedMatch(result);
+                if (!match.Success())
+                    return new FailedMatch(original);
+                text = match.RemainingText();
             }
             return new SuccessMatch(text);
         }
