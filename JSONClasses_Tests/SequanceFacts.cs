@@ -19,6 +19,19 @@ namespace JSONClasses_Tests
         }
 
         [Fact]
+        public void Should_Return_Modified_Text_False_Case()
+        {
+            var word = new Sequance(
+            new Character('a'),
+            new Character('b')
+            );
+
+            var match = word.Match("ac");
+            Assert.Equal("ac", match.RemainingText());
+            Assert.False(match.Succes());
+        }
+
+        [Fact]
         public void Should_Return_Original_Text()
         {
             var word = new Sequance(
