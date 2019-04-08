@@ -89,5 +89,45 @@ namespace JSONClasses_Tests
             Assert.True(match.Success());
         }
 
+        [Fact]
+        public void Should_Return__Correct_String_Hexadecimal_Sequence()
+        {
+            var hex = new Choice(
+            new Range('0', '9'),
+            new Range('a', 'f'),
+            new Range('A', 'F')
+            );
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex
+                )
+            );
+            var pattern = new Many(
+            new Sequance(hexSeq)
+            );
+
+            var match = pattern.Match("u1234u1234u12Zabc");
+
+            Assert.Equal("u12Zabc", match.RemainingText());
+            Assert.True(match.Success());
+        }
+
+        [Fact]
+        public void Should_Return__Correct_String_Text_Test()
+        {
+            var pattern = new Many(
+            new Text("I7Processor"));
+
+            var match = pattern.Match("I7ProcessorI7ProcessorI5Processor");
+
+            Assert.Equal("I5Processor", match.RemainingText());
+            Assert.True(match.Success());
+        }
+
     }
 }
