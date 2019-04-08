@@ -19,7 +19,7 @@ namespace JSONClasses
             foreach (var digit in patterns)
             {
                 IMatch match = digit.Match(text);
-                if (match.Succes())
+                if (match.Success())
                     text = match.RemainingText();
                 else
                     return new FailedMatch(result);

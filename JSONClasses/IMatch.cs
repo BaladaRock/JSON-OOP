@@ -4,7 +4,7 @@ namespace JSONClasses
 {
      public interface IMatch
     {
-        bool Succes();
+        bool Success();
         string RemainingText();
     }
 }

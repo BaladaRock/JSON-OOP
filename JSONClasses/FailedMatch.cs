@@ -18,7 +18,7 @@ namespace JSONClasses
            return text;
         }
 
-        public bool Succes()
+        public bool Success()
         {
             return false;
         }
