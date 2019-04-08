@@ -9,7 +9,7 @@ namespace JSONClasses_Tests
         public void Should_Return_Empty_String()
         {
             IMatch match = new SuccessMatch("");
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             Assert.Equal("", match.RemainingText());
         }
 
@@ -18,7 +18,7 @@ namespace JSONClasses_Tests
         {
             var character = new Character('1');
             IMatch match = character.Match("12");
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             Assert.Equal("2", match.RemainingText());
         }
 

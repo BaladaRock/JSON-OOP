@@ -18,7 +18,7 @@ namespace JSONClasses_Tests
             IMatch match = choice.Match("");
             //Act
             Assert.Equal("",match.RemainingText());
-            Assert.False(match.Succes());
+            Assert.False(match.Success());
             //Assert
         }
 
@@ -33,7 +33,7 @@ namespace JSONClasses_Tests
             IMatch match=choice.Match(null);
             //Acting part
             Assert.Null(match.RemainingText());
-            Assert.False(match.Succes());
+            Assert.False(match.Success());
             //Asserting part
         }
 
@@ -48,7 +48,7 @@ namespace JSONClasses_Tests
             var match = choice.Match("123");
             //Act
             Assert.Equal("23", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             //Assert
         }
 
@@ -63,7 +63,7 @@ namespace JSONClasses_Tests
             var match = choice.Match("abC");
             //Act
             Assert.Equal("abC", match.RemainingText());
-            Assert.False(match.Succes());
+            Assert.False(match.Success());
             //Assert
         }
 
@@ -83,7 +83,7 @@ namespace JSONClasses_Tests
             var match = hex.Match("A7");
             //Act
             Assert.Equal("7", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             //Assert
         }
 

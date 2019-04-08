@@ -10,7 +10,7 @@ namespace JSONClasses_Tests
         {
             var range = new Range('a','e');
             var match = range.Match("a");
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             Assert.Equal("", match.RemainingText());
         }
 
@@ -19,7 +19,7 @@ namespace JSONClasses_Tests
         {
             var range = new Range('1', '0');
             IMatch match = range.Match("");
-            Assert.False(match.Succes());
+            Assert.False(match.Success());
             Assert.Equal("", match.RemainingText());
         }
 
@@ -28,7 +28,7 @@ namespace JSONClasses_Tests
         {
             var range = new Range('1', '9');
             IMatch match = new SuccessMatch("5");
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             Assert.Equal("5", match.RemainingText());
         }
 
@@ -45,7 +45,7 @@ namespace JSONClasses_Tests
 
             var hex = new SuccessMatch(input);
             
-            Assert.True(hex.Succes());
+            Assert.True(hex.Success());
 
         }
 

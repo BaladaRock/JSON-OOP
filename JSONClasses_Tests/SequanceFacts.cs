@@ -15,7 +15,7 @@ namespace JSONClasses_Tests
 
             var match = word.Match("abcd");
             Assert.Equal("cd", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace JSONClasses_Tests
 
             var match = word.Match("ac");
             Assert.Equal("ac", match.RemainingText());
-            Assert.False(match.Succes());
+            Assert.False(match.Success());
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace JSONClasses_Tests
 
             var match = word.Match("12Rf2");
             Assert.Equal("12Rf2", match.RemainingText());
-            Assert.False(match.Succes());
+            Assert.False(match.Success());
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace JSONClasses_Tests
 
             var match = word.Match("ab");
             Assert.Equal("", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace JSONClasses_Tests
             );
             var match = sequance.Match("ab4Andrei");
             Assert.Equal("Andrei", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace JSONClasses_Tests
             var match = hexSeq.Match("u1234end");
             //Then
             Assert.Equal("end", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace JSONClasses_Tests
             var match = hexSeq.Match("uB005 ab");
             //Act
             Assert.Equal(" ab", match.RemainingText());
-            Assert.True(match.Succes());
+            Assert.True(match.Success());
             //Assert
         }
 
