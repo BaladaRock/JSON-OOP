@@ -16,8 +16,8 @@ namespace JSONClasses
         public IMatch Match(string text)
         {
             return string.IsNullOrEmpty(text) || text[0] != pattern
-                ? new FailedMatch(text)
-                : (IMatch) new SuccessMatch(text.Substring(1));
+            ? new FailedMatch(text)
+            : (IMatch) new SuccessMatch(text.Substring(1));
         }
     }
 }
