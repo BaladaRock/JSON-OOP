@@ -9,11 +9,11 @@ namespace JSONClasses_Tests
         public void Should_Return_True_Simple_Case()
         {
             var pattern = new Many(
-            new Character('a'));
+            new Text("abc"));
 
             var match = pattern.Match("abc");
 
-            Assert.Equal("bc", match.RemainingText());
+            Assert.Equal("", match.RemainingText());
             Assert.True(match.Success());
         }
 
