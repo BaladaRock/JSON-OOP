@@ -129,5 +129,42 @@ namespace JSONClasses_Tests
             Assert.True(match.Success());
         }
 
+        [Fact]
+        public void Should_Return_True_When_Min_value_Is_given()
+        {
+            var pattern = new Many(
+            new Character('a'),3);
+
+            var match = pattern.Match("aabc");
+
+            Assert.Equal("aabc", match.RemainingText());
+            Assert.True(match.Success());
+        }
+
+        [Fact]
+        public void Should_Return_True_When_Min_And_Max_value_Are_given()
+        {
+            var pattern = new Many(
+            new Character('a'),1,2);
+
+            var match = pattern.Match("aaaabc");
+
+            Assert.Equal("aabc", match.RemainingText());
+            Assert.True(match.Success());
+        }
+
+        [Fact]
+        public void Should_Return_Original_String_When_Min_And_Max_value_Are_given()
+        {
+            var pattern = new Many(
+            new Range('a','d'), 3,4);
+
+            var match = pattern.Match("aazzzz");
+
+            Assert.Equal("aazzzz", match.RemainingText());
+            Assert.True(match.Success());
+        }
+
+
     }
 }

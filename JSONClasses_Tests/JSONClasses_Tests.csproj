@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Remove="CharacterFacts - Copy.cs" />
     <Compile Remove="ChoiceFacts - Copy.cs" />
+    <Compile Remove="OneOrMoreFacts.cs" />
     <Compile Remove="RangeFacts - Copy.cs" />
     <Compile Remove="SequenceFacts - Copy.cs" />
   </ItemGroup>
