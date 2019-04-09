@@ -6,7 +6,7 @@ namespace JSONClasses
 {
     public class Many : IPattern
     {
-        private IPattern pattern;
+        private readonly IPattern pattern;
 
         public Many(IPattern pattern)
         {
@@ -15,17 +15,11 @@ namespace JSONClasses
 
         public IMatch Match(string text)
         {
-            if (text == null)
-                return new SuccessMatch(null);
+            var match = pattern.Match(text);
+            while (match.Success())
+                match = pattern.Match(match.RemainingText());
 
-            foreach (var character in text)
-            {
-                IMatch match = pattern.Match(text);
-                if (!match.Success())
-                    return new SuccessMatch(text);
-                text = match.RemainingText();
-            }
-            return new SuccessMatch(text);
+            return new SuccessMatch(match.RemainingText());
 
         }
     }
