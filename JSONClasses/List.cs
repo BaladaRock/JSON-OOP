@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
-     public class List : IPattern
+    public class List : IPattern
      {
 
         public List(IPattern element, IPattern separator)

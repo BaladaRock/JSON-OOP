@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
-     public class Optional : IPattern
+    public class Optional : IPattern
      {
         private readonly IPattern pattern;
         public Optional(IPattern pattern)

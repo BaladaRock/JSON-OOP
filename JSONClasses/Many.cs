@@ -1,38 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
     public class Many : IPattern
     {
         private readonly IPattern pattern;
-        private readonly int minRequerence;
-        private readonly int maxRequerence;
+        private readonly int minRecurrence;
+        private readonly int maxRecurrence;
         
-        public Many(IPattern pattern, int minRequerence = 0, int maxRequerence = int.MaxValue)
+        public Many(IPattern pattern, int minRecurrence = 0, int maxRecurrence = int.MaxValue)
         {
             this.pattern = pattern;
-            this.minRequerence = minRequerence;
-            this.maxRequerence = maxRequerence;
+            this.minRecurrence = minRecurrence;
+            this.maxRecurrence = maxRecurrence;
         }
 
         public IMatch Match(string text)
         {
-            int patternCounter = 0;
+            if (minRecurrence > maxRecurrence)
+                return new FailedMatch(text);
+
             var match = pattern.Match(text);
-            while (match.Success() && minRequerence <= maxRequerence)
+            int patternCounter = 0;
+
+            while (match.Success())
             {
                 patternCounter++;
-                match = pattern.Match(match.RemainingText());
-                if (patternCounter == maxRequerence-1)
+                if (patternCounter == maxRecurrence)
                     return new SuccessMatch(match.RemainingText());
+                match = pattern.Match(match.RemainingText());
             }
 
-            return patternCounter>=minRequerence && minRequerence<=maxRequerence
-                ? new SuccessMatch(match.RemainingText())
-                : (IMatch) new FailedMatch(text);
-            
+            return patternCounter >= minRecurrence
+            ? new SuccessMatch(match.RemainingText())
+            : (IMatch)new FailedMatch(text);
 
         }
     }
