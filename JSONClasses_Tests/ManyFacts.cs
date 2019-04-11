@@ -130,7 +130,7 @@ namespace JSONClasses_Tests
         }
 
         [Fact]
-        public void Should_Return_True_When_Min_value_Is_given()
+        public void Should_Return_False_When_Min_value_Is_NOT_Reached()
         {
             var pattern = new Many(
             new Character('a'),3);
@@ -138,7 +138,7 @@ namespace JSONClasses_Tests
             var match = pattern.Match("aabc");
 
             Assert.Equal("aabc", match.RemainingText());
-            Assert.True(match.Success());
+            Assert.False(match.Success());
         }
 
         [Fact]
@@ -162,9 +162,32 @@ namespace JSONClasses_Tests
             var match = pattern.Match("aazzzz");
 
             Assert.Equal("aazzzz", match.RemainingText());
-            Assert.True(match.Success());
+            Assert.False(match.Success());
         }
 
+        [Fact]
+        public void Should_Return_False_Minimum_Is_Greater_Then_Maximum()
+        {
+            var pattern = new Many(
+            new Range('a', 'd'), 4, 3);
+
+            var match = pattern.Match("aaaaazzzz");
+
+            Assert.Equal("aaaaazzzz", match.RemainingText());
+            Assert.False(match.Success());
+        }
+
+        [Fact]
+        public void Should_Return_False_Minimum_Is_Equal_With_Maximum()
+        {
+            var pattern = new Many(
+            new Range('a', 'd'), 4, 4);
+
+            var match = pattern.Match("aaaaazzzz");
+
+            Assert.Equal("azzzz", match.RemainingText());
+            Assert.True(match.Success());
+        }
 
     }
 }
