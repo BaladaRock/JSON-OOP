@@ -20,23 +20,19 @@ namespace JSONClasses
         public IMatch Match(string text)
         {
             int patternCounter = 0;
-            string maxIsHit = "";
             var match = pattern.Match(text);
-            while (match.Success())
+            while (match.Success() && minRequerence <= maxRequerence)
             {
-                maxIsHit = match.RemainingText();
-                if (maxRequerence != 0 && patternCounter == maxRequerence-1)
-                    return new SuccessMatch(maxIsHit);
-                
-                
-                match = pattern.Match(match.RemainingText());
                 patternCounter++;
+                match = pattern.Match(match.RemainingText());
+                if (patternCounter == maxRequerence-1)
+                    return new SuccessMatch(match.RemainingText());
             }
 
-            if (minRequerence != 0 && patternCounter < minRequerence)
-                return new SuccessMatch(text);
-
-            return new SuccessMatch(match.RemainingText());
+            return patternCounter>=minRequerence && minRequerence<=maxRequerence
+                ? new SuccessMatch(match.RemainingText())
+                : (IMatch) new FailedMatch(text);
+            
 
         }
     }
