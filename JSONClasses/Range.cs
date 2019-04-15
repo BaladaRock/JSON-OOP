@@ -13,11 +13,11 @@
 
         public IMatch Match(string text)
         {
-            return (string.IsNullOrEmpty(text)) ||
-             (text[0] < start) || 
-             (text[0] > end)
-            ? new FailedMatch(text)
-            : (IMatch) new SuccessMatch(text.Substring(1));
+            return string.IsNullOrEmpty(text)
+                   || (text[0] < start)
+                   || (text[0] > end)
+                ? new FailedMatch(text)
+                : (IMatch) new SuccessMatch(text.Substring(1));
         }
 
     }

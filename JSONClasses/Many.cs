@@ -30,8 +30,8 @@
             }
 
             return patternCounter >= minRecurrence
-            ? new SuccessMatch(match.RemainingText())
-            : (IMatch)new FailedMatch(text);
+                ? new SuccessMatch(match.RemainingText())
+                : (IMatch)new FailedMatch(text);
 
         }
     }

@@ -8,7 +8,7 @@
         public List(IPattern element, IPattern separator)
         {
             this.element = element;
-            list = new Many(new Sequance(separator, element));
+            list = new Many(new Sequence(separator, element));
         }
 
 

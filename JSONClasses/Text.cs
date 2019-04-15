@@ -15,8 +15,8 @@
                 return new FailedMatch(text);
 
             return text.StartsWith(prefix)
-            ? new SuccessMatch(text.Substring(prefix.Length))
-            : (IMatch)new FailedMatch(text);
+                ? new SuccessMatch(text.Substring(prefix.Length))
+                : (IMatch)new FailedMatch(text);
         }
     }
 }

@@ -12,8 +12,8 @@
         {
             IMatch match = pattern.Match(text);
             return match.Success()
-            ? match
-            : new SuccessMatch(text);
+                ? match
+                : new SuccessMatch(text);
         }
         
     }
