@@ -1,16 +1,23 @@
 ﻿namespace JSONClasses
 {
     public class List : IPattern
-     {
+    {
+        private readonly IPattern element;
+        private readonly Many list;
 
         public List(IPattern element, IPattern separator)
         {
-        
+            this.element = element;
+            list = new Many(new Sequance(separator, element));
         }
+
 
         public IMatch Match(string text)
         {
-            return null;
+            IMatch match = element.Match(text);
+            return match.Success()
+                ? list.Match(match.RemainingText())
+                : new SuccessMatch(match.RemainingText());
         }
     }
 }
