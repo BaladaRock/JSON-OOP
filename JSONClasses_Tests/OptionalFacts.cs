@@ -69,9 +69,9 @@ namespace JSONClasses_Tests
             new Range('A', 'F')
             );
 
-            var hexSeq = new Sequance(
+            var hexSeq = new Sequence(
                 new Character('u'),
-                new Sequance(
+                new Sequence(
                     hex,
                     hex,
                     hex,

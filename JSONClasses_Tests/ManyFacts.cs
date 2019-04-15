@@ -98,9 +98,9 @@ namespace JSONClasses_Tests
             new Range('A', 'F')
             );
 
-            var hexSeq = new Sequance(
+            var hexSeq = new Sequence(
                 new Character('u'),
-                new Sequance(
+                new Sequence(
                     hex,
                     hex,
                     hex,
@@ -108,7 +108,7 @@ namespace JSONClasses_Tests
                 )
             );
             var pattern = new Many(
-            new Sequance(hexSeq)
+            new Sequence(hexSeq)
             );
 
             var match = pattern.Match("u1234u1234u12Zabc");

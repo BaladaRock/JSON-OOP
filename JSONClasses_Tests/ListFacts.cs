@@ -19,7 +19,7 @@ namespace JSONClasses_Tests
             Assert.True(element.Success());
 
         }
-
+        
         [Fact]
         public void Should_Return_True_EmptyString_Case()
         {
@@ -101,7 +101,7 @@ namespace JSONClasses_Tests
             //Given
             var digits = new Many(new Range('0', '9'),1);
             var whitespace = new Many(new Any(" \r\n\t"));
-            var separator = new Sequance(whitespace, new Character(';'), whitespace);
+            var separator = new Sequence(whitespace, new Character(';'), whitespace);
             var list = new List(digits,separator);
 
             //When
