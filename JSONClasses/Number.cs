@@ -10,31 +10,22 @@ namespace JSONClasses
 
         public Number()
         {
-            var oneNine = new Range('1', '9');
-            var digit = new Choice(new Character('0'), oneNine);
-            var digits = new Choice(digit, new Sequence(digit));
-            var emptyText = new Text("");
+            var digit = new Range('0', '9');
+            var digits = new Many(digit);
+            var zeroChar = new Character('0');
+
             var minus = new Character('-');
-            var plus = new Character('+');
+            var natural = new Choice(zeroChar, digits);
+            var integer = new Sequence(new Optional(minus), natural);
+
             var point = new Character('.');
-            var negative = new Sequence(minus, digit);
-            var oneNineDigits = new Sequence(oneNine, digits);
-            var negativeOneNineDigits = new Sequence(minus, oneNine, digits);
-            //integer and other internal components
-
-            var sign = new Choice(emptyText, plus, minus);
-            var smallExponent = new Sequence(new Character('e'), sign, digits);
-            var bigExponent = new Sequence(new Character('E'), sign, digits);
-            var seqForE = new Sequence(bigExponent, sign, digits);
-            var eSequence = new Sequence(smallExponent, sign, digits);
-            //exp components
-
-            var integer = new Choice(digit, oneNineDigits, negative, negativeOneNineDigits);
-            var frac = new Choice(emptyText, new Sequence(point, digits));//frac part
-            var exp = new Choice(emptyText, seqForE,eSequence);
-            //number components
-
-            pattern =new Sequence(integer,frac,exp);
+            var frac = new Sequence(integer, new Optional(new Sequence(point, digits)));
+            
+            var symbol = new Optional(new Any("+-"));
+            var e = new Any("eE");
+            var exp = new Sequence(e, symbol, digits);
+            
+            pattern = new Sequence(frac, new Optional(exp));
         }
 
         public IMatch Match(string text)
