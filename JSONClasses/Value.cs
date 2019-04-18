@@ -22,7 +22,8 @@ namespace JSONClasses
             var separator = new Sequence(whitespace, new Character(','), whitespace);
             var element = new Sequence(whitespace, value, whitespace);
            
-            var array = new Sequence(new Character('['),
+            var array = new Sequence(whitespace,
+                new Character('['),
                 new List(element,separator),
                 new Character(']')
             );
@@ -31,7 +32,8 @@ namespace JSONClasses
             var objectString = new Sequence(whitespace, new String(), whitespace);
             var members = new Sequence(objectString, objectSeparator, element);
 
-            var jsonObject = new Sequence(new Character('{'),
+            var jsonObject = new Sequence(whitespace,
+               new Character('{'),
                new List(members, separator),
                new Character('}')
            );
@@ -39,7 +41,7 @@ namespace JSONClasses
             value.Add(array);
             value.Add(jsonObject);
 
-            pattern = new Sequence(new Choice(value, array, jsonObject));
+            pattern = value;
         }
 
         public IMatch Match(string text)
