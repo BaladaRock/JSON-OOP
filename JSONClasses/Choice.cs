@@ -20,6 +20,12 @@
             }
             return new FailedMatch(text);
         }
+        
+        public void Add(IPattern pattern)
+        {
+            Array.Resize(ref patterns, patterns.Length + 1);
+            patterns[patterns.Length-1] = pattern;
+        }
 
     }
 }
