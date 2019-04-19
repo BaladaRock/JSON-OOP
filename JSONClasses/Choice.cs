@@ -1,8 +1,10 @@
-﻿namespace JSONClasses
+using System;
+
+namespace JSONClasses
 {
     public class Choice : IPattern
     {
-        private readonly IPattern[] patterns;
+        private  IPattern[] patterns;
 
         public Choice(params IPattern[] patterns)
         {
