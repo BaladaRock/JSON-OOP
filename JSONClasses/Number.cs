@@ -11,7 +11,7 @@ namespace JSONClasses
         public Number()
         {
             var digit = new Range('0', '9');
-            var digits = new Many(digit);
+            var digits = new Many(digit, 1);
             var zeroChar = new Character('0');
 
             var minus = new Character('-');
