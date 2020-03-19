@@ -4,17 +4,16 @@ namespace JSONClasses
 {
     public class Choice : IPattern
     {
-        private  IPattern[] patterns;
+        private IPattern[] patterns;
 
         public Choice(params IPattern[] patterns)
         {
-            this.patterns= patterns;
+            this.patterns = patterns;
         }
 
         public IMatch Match(string text)
         {
-
-            foreach(var digit in patterns)
+            foreach (var digit in patterns)
             {
                 IMatch match = digit.Match(text);
                 if (match.Success())
@@ -22,12 +21,11 @@ namespace JSONClasses
             }
             return new FailedMatch(text);
         }
-        
+
         public void Add(IPattern pattern)
         {
             Array.Resize(ref patterns, patterns.Length + 1);
-            patterns[patterns.Length-1] = pattern;
+            patterns[patterns.Length - 1] = pattern;
         }
-
     }
 }

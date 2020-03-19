@@ -4,5 +4,4 @@
     {
         IMatch Match(string text);
     }
-    
 }

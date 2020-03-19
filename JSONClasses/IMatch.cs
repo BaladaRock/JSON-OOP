@@ -1,10 +1,9 @@
-﻿
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
-     public interface IMatch
+    public interface IMatch
     {
-        bool Success();
         string RemainingText();
+
+        bool Success();
     }
 }

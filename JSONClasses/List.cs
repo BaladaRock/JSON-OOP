@@ -11,7 +11,6 @@
             list = new Many(new Sequence(separator, element));
         }
 
-
         public IMatch Match(string text)
         {
             IMatch match = element.Match(text);

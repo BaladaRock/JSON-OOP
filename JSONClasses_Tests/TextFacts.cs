@@ -71,9 +71,8 @@ namespace JSONClasses_Tests
             var word = new Text(null);
             var match = word.Match("Rock");
 
-            Assert.Equal("Rock",match.RemainingText());
+            Assert.Equal("Rock", match.RemainingText());
             Assert.False(match.Success());
         }
-
     }
 }

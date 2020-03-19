@@ -104,6 +104,5 @@ namespace JSONClasses_Tests
             Assert.Empty(match.RemainingText());
             Assert.True(match.Success());
         }
-
     }
 }

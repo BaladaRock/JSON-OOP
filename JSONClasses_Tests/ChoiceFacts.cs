@@ -1,12 +1,10 @@
 ﻿using JSONClasses;
 using Xunit;
 
-
 namespace JSONClasses_Tests
 {
-   public class ChoiceFacts
+    public class ChoiceFacts
     {
-
         [Fact]
         public void Should_return_Empty_String()
         {
@@ -17,7 +15,7 @@ namespace JSONClasses_Tests
             //Arrange
             IMatch match = choice.Match("");
             //Act
-            Assert.Equal("",match.RemainingText());
+            Assert.Equal("", match.RemainingText());
             Assert.False(match.Success());
             //Assert
         }
@@ -27,10 +25,10 @@ namespace JSONClasses_Tests
         {
             IPattern choice = new Choice(
                 new Character('0'),
-                new Range('1','5')
+                new Range('1', '5')
                 );
             //Arranging part
-            IMatch match=choice.Match(null);
+            IMatch match = choice.Match(null);
             //Acting part
             Assert.Null(match.RemainingText());
             Assert.False(match.Success());
@@ -86,6 +84,5 @@ namespace JSONClasses_Tests
             Assert.True(match.Success());
             //Assert
         }
-
     }
 }

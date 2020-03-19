@@ -6,7 +6,7 @@
 
         public Any(string accepted)
         {
-            this.accepted=accepted;
+            this.accepted = accepted;
         }
 
         public IMatch Match(string text)
@@ -16,6 +16,5 @@
                 ? (IMatch)new SuccessMatch(text.Substring(1))
                 : new FailedMatch(text);
         }
-
     }
 }

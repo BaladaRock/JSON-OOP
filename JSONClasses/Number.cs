@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
     public class Number : IPattern
     {
@@ -20,11 +16,11 @@ namespace JSONClasses
 
             var point = new Character('.');
             var frac = new Sequence(integer, new Optional(new Sequence(point, digits)));
-            
+
             var symbol = new Optional(new Any("+-"));
             var e = new Any("eE");
             var exp = new Sequence(e, symbol, digits);
-            
+
             pattern = new Sequence(frac, new Optional(exp));
         }
 

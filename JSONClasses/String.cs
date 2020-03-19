@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
     public class String : IPattern
     {
@@ -10,7 +6,6 @@ namespace JSONClasses
 
         public String()
         {
-
             var quotationMarks = new Character('\"');
 
             var hex = new Choice(
@@ -35,7 +30,6 @@ namespace JSONClasses
                 hexSeq
             );
 
-
             var acceptedCharacters = new Many(
                 new Choice(
                 new Range('\u0020', '\u0021'),
@@ -47,7 +41,6 @@ namespace JSONClasses
 
             pattern = new Sequence(quotationMarks, acceptedCharacters, quotationMarks);
         }
-       
 
         public IMatch Match(string text)
         {

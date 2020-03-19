@@ -21,6 +21,5 @@ namespace JSONClasses
             }
             return new SuccessMatch(text);
         }
-
     }
 }

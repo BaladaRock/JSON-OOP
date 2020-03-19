@@ -1,14 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.IO.MemoryMappedFiles;
+
 namespace JSONClasses
 {
-
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             //Console.WriteLine(System.IO.File.ReadAllText(@"D:\ProgramData\JuniorMind\OOP\(1.) JSON\JSON_full - OOP\JSON - OOP"));
 
             if (args.Length != 1)

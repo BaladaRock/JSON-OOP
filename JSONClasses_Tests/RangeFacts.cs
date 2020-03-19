@@ -8,7 +8,7 @@ namespace JSONClasses_Tests
         [Fact]
         public void CheckWord_One_Character()
         {
-            var range = new Range('a','e');
+            var range = new Range('a', 'e');
             var match = range.Match("a");
             Assert.True(match.Success());
             Assert.Equal("", match.RemainingText());
@@ -39,17 +39,11 @@ namespace JSONClasses_Tests
         [InlineData("A5")]
         [InlineData("B3")]
         [InlineData("f6")]
-        
         public void Check__Word_HasHexadecimal_Characters_(string input)
         {
-
             var hex = new SuccessMatch(input);
-            
+
             Assert.True(hex.Success());
-
         }
-
-
-       
     }
 }

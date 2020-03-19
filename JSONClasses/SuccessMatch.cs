@@ -1,6 +1,4 @@
-﻿
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
     public class SuccessMatch : IMatch
     {

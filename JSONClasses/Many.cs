@@ -5,7 +5,7 @@
         private readonly IPattern pattern;
         private readonly int minRecurrence;
         private readonly int maxRecurrence;
-        
+
         public Many(IPattern pattern, int minRecurrence = 0, int maxRecurrence = int.MaxValue)
         {
             this.pattern = pattern;
@@ -32,7 +32,6 @@
             return patternCounter >= minRecurrence
                 ? new SuccessMatch(match.RemainingText())
                 : (IMatch)new FailedMatch(text);
-
         }
     }
 }

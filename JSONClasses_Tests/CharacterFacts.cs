@@ -21,6 +21,5 @@ namespace JSONClasses_Tests
             Assert.True(match.Success());
             Assert.Equal("2", match.RemainingText());
         }
-
     }
 }

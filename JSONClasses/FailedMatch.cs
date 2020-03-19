@@ -11,7 +11,7 @@
 
         public string RemainingText()
         {
-           return text;
+            return text;
         }
 
         public bool Success()

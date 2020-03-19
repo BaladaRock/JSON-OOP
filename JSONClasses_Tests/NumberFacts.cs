@@ -3,9 +3,9 @@ using Xunit;
 
 namespace JSONClasses_Tests
 {
-     public class NumberFacts
-     {
-       [Fact]
+    public class NumberFacts
+    {
+        [Fact]
         public void Should_Return_Empty_String_One_Digit()
         {
             var number = new Number();
@@ -19,7 +19,7 @@ namespace JSONClasses_Tests
         public void Should_Return_Empty_String_Natural_Number()
         {
             var number = new Number();
-            var match=number.Match("123");
+            var match = number.Match("123");
 
             Assert.Empty(match.RemainingText());
             Assert.True(match.Success());
@@ -41,7 +41,7 @@ namespace JSONClasses_Tests
             var number = new Number();
             var match = number.Match("012");
 
-            Assert.Equal("12",match.RemainingText());
+            Assert.Equal("12", match.RemainingText());
             Assert.True(match.Success());
         }
 
@@ -111,7 +111,7 @@ namespace JSONClasses_Tests
             var number = new Number();
             var match = number.Match("3.45e3E2.3");
 
-            Assert.Equal("E2.3",match.RemainingText());
+            Assert.Equal("E2.3", match.RemainingText());
             Assert.True(match.Success());
         }
 
@@ -124,6 +124,5 @@ namespace JSONClasses_Tests
             Assert.Equal(".243", match.RemainingText());
             Assert.True(match.Success());
         }
-
-     }
+    }
 }

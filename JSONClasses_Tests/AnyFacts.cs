@@ -33,7 +33,6 @@ namespace JSONClasses_Tests
 
             Assert.Null(match.RemainingText());
             Assert.False(match.Success());
-            
         }
 
         [Fact]
@@ -42,9 +41,8 @@ namespace JSONClasses_Tests
             IPattern choice = new Any(null);
             IMatch match = choice.Match("432");
 
-            Assert.Equal("432",match.RemainingText());
+            Assert.Equal("432", match.RemainingText());
             Assert.False(match.Success());
-
         }
 
         [Fact]
@@ -66,7 +64,5 @@ namespace JSONClasses_Tests
             Assert.False(match.Success());
             Assert.Equal("s", match.RemainingText());
         }
-
-
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace JSONClasses
+﻿namespace JSONClasses
 {
     public class Character : IPattern
     {
@@ -14,7 +13,7 @@ namespace JSONClasses
         {
             return string.IsNullOrEmpty(text) || text[0] != pattern
                ? new FailedMatch(text)
-               : (IMatch) new SuccessMatch(text.Substring(1));
+               : (IMatch)new SuccessMatch(text.Substring(1));
         }
     }
 }

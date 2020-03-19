@@ -33,7 +33,7 @@ namespace JSONClasses_Tests
         public void Should_Return__Empty_String_When_Pattern_Is_Equal_To_String()
         {
             var pattern = new Many(
-            new Range('a','d'));
+            new Range('a', 'd'));
 
             var match = pattern.Match("aaaaaabc");
 
@@ -133,7 +133,7 @@ namespace JSONClasses_Tests
         public void Should_Return_False_When_Min_value_Is_NOT_Reached()
         {
             var pattern = new Many(
-            new Character('a'),3);
+            new Character('a'), 3);
 
             var match = pattern.Match("aabc");
 
@@ -145,7 +145,7 @@ namespace JSONClasses_Tests
         public void Should_Return_True_When_Min_And_Max_value_Are_given()
         {
             var pattern = new Many(
-            new Character('a'),1,2);
+            new Character('a'), 1, 2);
 
             var match = pattern.Match("aaaabc");
 
@@ -157,7 +157,7 @@ namespace JSONClasses_Tests
         public void Should_Return_Original_String_When_Min_And_Max_value_Are_given()
         {
             var pattern = new Many(
-            new Range('a','d'), 3,4);
+            new Range('a', 'd'), 3, 4);
 
             var match = pattern.Match("aazzzz");
 
@@ -193,13 +193,12 @@ namespace JSONClasses_Tests
         public void Another_Test_While_Condition_Is_Not_Satisfied()
         {
             var pattern = new Many(
-            new Range('a', 'd'),3,4);
+            new Range('a', 'd'), 3, 4);
 
             var match = pattern.Match("RMN");
 
             Assert.Equal("RMN", match.RemainingText());
             Assert.False(match.Success());
         }
-
     }
 }

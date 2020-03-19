@@ -1,5 +1,4 @@
-
-﻿using JSONClasses;
+using JSONClasses;
 using Xunit;
 
 namespace JSONClasses_Tests
@@ -37,7 +36,7 @@ namespace JSONClasses_Tests
         {
             var word = new Sequence(
             new Character('a'),
-            new Range('b','c')
+            new Range('b', 'c')
             );
 
             var match = word.Match("12Rf2");
@@ -125,8 +124,5 @@ namespace JSONClasses_Tests
             Assert.True(match.Success());
             //Assert
         }
-
-
     }
 }
-

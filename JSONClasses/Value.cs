@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JSONClasses
+﻿namespace JSONClasses
 {
-     public class Value : IPattern
-     {
+    public class Value : IPattern
+    {
         private readonly IPattern pattern;
 
         public Value()
@@ -21,10 +17,10 @@ namespace JSONClasses
             var whitespace = new Many(new Any(" \r\n\t"));
             var separator = new Sequence(whitespace, new Character(','), whitespace);
             var element = new Sequence(whitespace, value, whitespace);
-           
+
             var array = new Sequence(whitespace,
                 new Character('['),
-                new List(element,separator),
+                new List(element, separator),
                 new Character(']')
             );
 

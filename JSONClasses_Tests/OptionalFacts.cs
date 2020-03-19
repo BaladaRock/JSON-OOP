@@ -3,8 +3,8 @@ using Xunit;
 
 namespace JSONClasses_Tests
 {
-     public class OptionalFacts
-     {
+    public class OptionalFacts
+    {
         [Fact]
         public void Should_Return_Remaining_String_Word_Has_Pattern()
         {
@@ -56,7 +56,7 @@ namespace JSONClasses_Tests
              new Character('a'));
             var match = pattern.Match(null);
 
-            Assert.Null( match.RemainingText());
+            Assert.Null(match.RemainingText());
             Assert.True(match.Success());
         }
 
@@ -82,9 +82,8 @@ namespace JSONClasses_Tests
             var pattern = new Optional(hexSeq);
             var match = pattern.Match("uAE12U345");
 
-            Assert.Equal("U345",match.RemainingText());
+            Assert.Equal("U345", match.RemainingText());
             Assert.True(match.Success());
         }
-
     }
 }
